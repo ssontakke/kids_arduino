@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Arduino",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "~/Library/Arduino15/packages/arduino/hardware/renesas_uno/1.0.0/cores/arduino",
+                "~/Library/Arduino15/packages/arduino/hardware/renesas_uno/1.0.0/libraries/**",
+                "~/Library/Arduino15/packages/arduino/tools/**",
+                "~/Library/Arduino15/libraries/**"
+            ],
+            "forcedInclude": [
+                "~/Library/Arduino15/packages/arduino/hardware/renesas_uno/1.0.0/cores/arduino/Arduino.h"
+            ],
+            "defines": [
+                "ARDUINO=100",
+                "USBCON"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,100 @@
+TAP MODULE MOTOR CONTROLLER - WIRING DIAGRAM
+============================================
+
+ARDUINO BOARD
+┌─────────────────────────────────────┐
+│                                     │
+│  ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐  │
+│  │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │  │
+│  └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘  │
+│  0   1   2   3   4   5   6   7   8  │
+│                                     │
+│  ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐  │
+│  │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │  │
+│  └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘  │
+│  9   10  11  12  13  A0  A1  A2  A3 │
+│                                     │
+│  5V ────────────────────────────────│
+│  GND ───────────────────────────────│
+└─────────────────────────────────────┘
+    │
+    │
+    ▼
+
+KY-031 TAP MODULE
+┌─────────────────┐
+│                 │
+│  ┌─┐ ┌─┐ ┌─┐   │
+│  │V│ │G│ │D│   │
+│  │C│ │N│ │O│   │
+│  │C│ │D│ │ │   │
+│  └─┘ └─┘ └─┘   │
+│                 │
+└─────────────────┘
+    │
+    │ 5V ──────────┐
+    │ GND ─────────┤
+    │ DO ──────────┘
+    │
+    ▼
+
+RELAY MODULE
+┌─────────────────┐
+│                 │
+│  ┌─┐ ┌─┐ ┌─┐   │
+│  │V│ │G│ │I│   │
+│  │C│ │N│ │N│   │
+│  │C│ │D│ │ │   │
+│  └─┘ └─┘ └─┘   │
+│                 │
+│  ┌─┐ ┌─┐ ┌─┐   │
+│  │C│ │N│ │N│   │
+│  │O│ │O│ │C│   │
+│  │M│ │ │ │ │   │
+│  └─┘ └─┘ └─┘   │
+└─────────────────┘
+    │
+    │ 5V ──────────┐
+    │ GND ─────────┤
+    │ IN ──────────┘
+    │
+    ▼
+
+12V MOTOR CONNECTION
+┌─────────────────┐
+│                 │
+│  12V POWER      │
+│  SUPPLY         │
+│  ┌─┐           │
+│  │+│ ──────────┼─── COM (Relay)
+│  └─┘           │
+│  ┌─┐           │
+│  │-│ ──────────┼─── Motor (-)
+│  └─┘           │
+│                 │
+│  12V DC MOTOR   │
+│  ┌─┐           │
+│  │+│ ──────────┼─── NO (Relay)
+│  └─┘           │
+│  ┌─┐           │
+│  │-│ ──────────┼─── Power Supply (-)
+│  └─┘           │
+└─────────────────┘
+
+CONNECTION SUMMARY:
+==================
+
+Arduino Pin 2 ──→ KY-031 DO (Digital Output)
+Arduino Pin 8 ──→ Relay IN (Input)
+Arduino 5V ────→ KY-031 VCC + Relay VCC
+Arduino GND ───→ KY-031 GND + Relay GND
+
+12V Power Supply (+) ──→ Relay COM
+12V Power Supply (-) ──→ Motor (-)
+Motor (+) ────────────→ Relay NO
+
+NOTES:
+- Use appropriate wire gauge for 12V motor connections
+- Ensure all connections are secure
+- Double-check polarity for motor connections
+- Test with Serial Monitor open to see debug messages

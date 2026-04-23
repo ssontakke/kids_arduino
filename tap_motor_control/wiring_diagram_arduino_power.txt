@@ -1,0 +1,123 @@
+TAP MODULE MOTOR CONTROLLER - ARDUINO POWER VERSION
+==================================================
+
+ARDUINO BOARD
+┌─────────────────────────────────────┐
+│                                     │
+│  ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐  │
+│  │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │  │
+│  └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘  │
+│  0   1   2   3   4   5   6   7   8  │
+│                                     │
+│  ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐  │
+│  │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │  │
+│  └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘  │
+│  9   10  11  12  13  A0  A1  A2  A3 │
+│                                     │
+│  5V ────────────────────────────────│
+│  GND ───────────────────────────────│
+└─────────────────────────────────────┘
+    │
+    │
+    ▼
+
+KY-031 TAP MODULE
+┌─────────────────┐
+│                 │
+│  ┌─┐ ┌─┐ ┌─┐   │
+│  │V│ │G│ │D│   │
+│  │C│ │N│ │O│   │
+│  │C│ │D│ │ │   │
+│  └─┘ └─┘ └─┘   │
+│                 │
+└─────────────────┘
+    │
+    │ 5V ──────────┐
+    │ GND ─────────┤
+    │ DO ──────────┘
+    │
+    ▼
+
+TRANSISTOR CIRCUIT (for small motor)
+┌─────────────────┐
+│                 │
+│  Arduino Pin 8  │
+│  ┌─┐           │
+│  │ │ ──→ 220Ω ──┼─── Transistor Base
+│  └─┘           │
+│                 │
+│  Transistor     │
+│  ┌─┐ ┌─┐ ┌─┐   │
+│  │B│ │C│ │E│   │
+│  │ │ │ │ │ │   │
+│  └─┘ └─┘ └─┘   │
+│     │   │       │
+│     │   └───→ GND
+│     │
+│     ▼
+│
+│  SMALL DC MOTOR
+│  ┌─┐           │
+│  │+│ ──────────┼─── Transistor Collector
+│  └─┘           │
+│  ┌─┐           │
+│  │-│ ──────────┼─── GND
+│  └─┘           │
+└─────────────────┘
+
+CONNECTION SUMMARY:
+==================
+
+Arduino Pin 2 ──→ KY-031 DO (Digital Output)
+Arduino Pin 8 ──→ 220Ω Resistor ──→ Transistor Base
+Arduino 5V ────→ KY-031 VCC
+Arduino GND ───→ KY-031 GND + Transistor Emitter + Motor (-)
+
+Transistor Collector ──→ Motor (+)
+
+COMPONENTS NEEDED:
+=================
+
+1. Arduino Board (Uno/Nano)
+2. KY-031 Tap Module
+3. Small DC Motor (3-6V, under 200mA)
+4. Transistor (2N2222A, BC547, or similar NPN)
+5. 220Ω Resistor
+6. Breadboard & Jumper Wires
+
+MOTOR SPECIFICATIONS:
+====================
+
+SUITABLE MOTORS:
+- Small hobby motors (3-6V)
+- Current draw: Under 200mA
+- Examples: 130-size motors, small vibration motors
+- Typical applications: Small fans, toys, small pumps
+
+NOT SUITABLE:
+- Large motors (12V+)
+- High current motors (over 200mA)
+- Stepper motors
+- Servo motors
+
+SAFETY NOTES:
+=============
+
+⚠️  WARNING: Only use small motors with this version!
+- Arduino can only supply ~200mA safely
+- Larger motors may damage the Arduino
+- If motor gets hot or Arduino resets, use external power version
+- Always test with a multimeter to measure current draw
+
+ADVANTAGES:
+==========
+- No external power supply needed
+- Simpler wiring
+- Lower cost
+- Portable
+
+DISADVANTAGES:
+==============
+- Limited to small motors only
+- Lower power output
+- Risk of Arduino damage if motor is too large

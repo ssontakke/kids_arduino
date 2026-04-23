@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Arduino: Compile",
+            "type": "shell",
+            "command": "arduino-cli",
+            "args": [
+                "compile",
+                "--fqbn",
+                "arduino:renesas_uno:uno_r4_wifi",
+                "oled_display"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Arduino: Upload",
+            "type": "shell",
+            "command": "arduino-cli",
+            "args": [
+                "upload",
+                "--fqbn",
+                "arduino:renesas_uno:uno_r4_wifi",
+                "--port",
+                "/dev/tty.usbmodem*",
+                "oled_display"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "dependsOn": "Arduino: Compile"
+        },
+        {
+            "label": "Arduino: Compile & Upload",
+            "dependsOn": ["Arduino: Compile", "Arduino: Upload"],
+            "group": "build"
+        }
+    ]
+}
